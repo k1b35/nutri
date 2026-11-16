@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Нутри — блюдо из видео под ваш организм</title>
+<meta name="description" content="ИИ-нутрициолог загородной кухни: пересчитает порцию, добавит белок и клетчатку и подберёт специи под ваше самочувствие. Пишите или говорите голосом.">
+<meta property="og:title" content="Нутри — блюдо из видео под ваш организм">
+<meta property="og:description" content="Персональная версия блюда из видеоблога: порция, нутриенты и специи под вас.">
+<meta name="theme-color" content="#F5EFE3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%234A5D23'/%3E%3Cpath d='M9 22c0-8 6-13 15-13-1 9-6 14-13 14' fill='none' stroke='%23F5EFE3' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M9 23l8-8' stroke='%23F5EFE3' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  --cream:#F5EFE3; --paper:#FBF8F1; --card:#FFFFFF;
+  --ink:#23291B; --ink-2:#4B5140; --muted:#767866;
+  --olive:#4A5D23; --olive-2:#33421A; --olive-3:#2A3615;
+  --sage:#A9B58C; --sage-soft:#E7EBDA;
+  --terra:#C2643A; --honey:#E2A75A;
+  --mint:#E2F2E9; --mint-ink:#1F5E43; --peach:#FCE9DC; --peach-ink:#8A3E12;
+  --sky:#E8EEF3; --sky-ink:#34434B;
+  --line:rgba(35,41,27,.12);
+  --r-xl:36px; --r-lg:28px; --r-md:20px; --r-sm:14px;
+  --shadow:0 1px 2px rgba(35,41,27,.05),0 18px 40px -18px rgba(35,41,27,.25);
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --sans:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  --wrap:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.08}
+h1{font-size:clamp(40px,6.2vw,78px)}
+h2{font-size:clamp(32px,4.4vw,54px)}
+h3{font-size:20px;line-height:1.3}
+em{font-style:italic;color:var(--olive)}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--olive)}
+.eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--ink-2);max-width:56ch}
+section{padding:110px 0}
+.sec-head{display:grid;gap:18px;max-width:760px;margin-bottom:56px}
+.hero .wrap>*,.how-grid>*,.chat-grid>*,.doc-grid>*,.final-card>*,.bento>*,.eps>*{min-width:0}
+.ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;border:0;
+  font:600 16px/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--olive);color:var(--cream);box-shadow:0 10px 24px -10px rgba(74,93,35,.7)}
+.btn-primary:hover{background:var(--olive-2)}
+.btn-ghost{background:rgba(255,255,255,.6);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{background:#fff}
+.btn-light{background:var(--cream);color:var(--olive-3)}
+.btn-light:hover{background:#fff}
+.btn-outline-light{background:transparent;color:var(--cream);border:1px solid rgba(245,239,227,.35)}
+.btn-outline-light:hover{background:rgba(245,239,227,.08)}
+
+/* Навигация */
+.nav{position:sticky;top:0;z-index:50;background:rgba(245,239,227,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font:600 20px var(--sans);text-decoration:none;letter-spacing:-.02em}
+.logo-mark{width:34px;height:34px;border-radius:11px;background:var(--olive);display:grid;place-items:center;color:var(--cream)}
+.logo-mark .ico{width:20px;height:20px}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:15px}
+.nav-links a{text-decoration:none;color:var(--ink-2)}
+.nav-links a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+
+/* Hero */
+.hero{padding:56px 0 110px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:26px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:8px;font-size:14px;color:var(--ink-2)}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust .ico{width:17px;height:17px;color:var(--olive)}
+.hero-visual{position:relative;min-height:600px}
+.blob{position:absolute;border-radius:50%;filter:blur(2px)}
+.blob.b1{width:380px;height:380px;background:var(--sage-soft);right:-60px;top:-30px}
+.blob.b2{width:180px;height:180px;background:#F1D9B5;left:10px;top:40px}
+.hero-photo{position:absolute;right:0;top:0;width:80%;aspect-ratio:4/5;border-radius:var(--r-xl)}
+.phone{position:absolute;left:0;bottom:-10px;width:272px;border-radius:42px;background:#1E2316;padding:10px;box-shadow:0 40px 80px -30px rgba(35,41,27,.55)}
+.phone-screen{border-radius:33px;background:var(--paper);height:470px;overflow:hidden;display:flex;flex-direction:column}
+.phone-top{display:flex;align-items:center;gap:9px;padding:16px 16px 12px;border-bottom:1px solid var(--line)}
+.phone-top .logo-mark{width:30px;height:30px;border-radius:50%}
+.phone-top b{font-size:14px;display:block;line-height:1.2}
+.phone-top small{font-size:11px;color:var(--muted)}
+.phone-chat{flex:1;min-height:0;overflow:hidden;padding:14px 12px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end;font-size:13px;line-height:1.4}
+.pb{max-width:88%;padding:9px 12px;border-radius:16px;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.pb.show{opacity:1;transform:none}
+.pb.u{align-self:flex-end;background:var(--olive);color:var(--cream);border-bottom-right-radius:5px}
+.pb.b{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px}
+.phone-input{margin:0 10px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);padding:9px 12px;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:space-between}
+.phone-input span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phone-input .ico{width:16px;height:16px;color:var(--olive)}
+.float{position:absolute;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);
+  border-radius:16px;padding:11px 15px;font-size:14px;box-shadow:var(--shadow);display:flex;align-items:center;gap:9px;white-space:nowrap;animation:bob 6s ease-in-out infinite}
+.float i{width:9px;height:9px;border-radius:50%;flex:none}
+.float.f1{right:-8px;top:64px}
+.float.f1 i{background:#39A66E}
+.float.f2{right:30px;top:52%;animation-delay:-2s}
+.float.f2 i{background:var(--terra)}
+.float.f3{right:-4px;bottom:46px;animation-delay:-4s}
+.float.f3 i{background:var(--honey)}
+.caption{position:absolute;left:0;bottom:-40px;font-size:12px;color:var(--muted)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Плейсхолдеры под фото */
+.ph{position:relative;overflow:hidden;background:
+  repeating-linear-gradient(135deg,rgba(74,93,35,.07) 0 14px,transparent 14px 28px),
+  linear-gradient(160deg,#ECE4D1,#DACFB3);background-size:cover;background-position:center}
+.ph::before{content:"";position:absolute;inset:0;margin:auto;width:46px;height:46px;opacity:.38;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333421A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z'/%3E%3Ccircle cx='12' cy='13' r='3.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.ph::after{content:attr(data-label);position:absolute;left:14px;bottom:14px;max-width:calc(100% - 28px);font-size:12px;line-height:1.3;color:var(--ink-2);
+  background:rgba(251,248,241,.9);padding:6px 11px;border-radius:999px}
+.ph.loaded::before,.ph.loaded::after{display:none}
+.hero-photo::after{top:16px;bottom:auto}
+.ep-thumb::before{display:none}
+
+/* Как это работает */
+.how{background:var(--paper);border-radius:var(--r-xl) var(--r-xl) 0 0}
+.how-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.tv{position:relative;background:#1B2013;border-radius:22px;padding:12px;box-shadow:var(--shadow)}
+.tv-screen{aspect-ratio:16/9;border-radius:12px}
+.tv::after{content:"";position:absolute;left:50%;bottom:-26px;width:140px;height:14px;transform:translateX(-50%);border-radius:0 0 10px 10px;background:#2A3020}
+.qr{position:absolute;right:30px;bottom:30px;width:96px;height:96px;background:#fff;border-radius:10px;padding:8px;display:grid;grid-template-columns:repeat(21,1fr);gap:0}
+.qr i{background:#1B2013}
+.qr i.o{background:transparent}
+.qr::before{content:"";position:absolute;inset:-6px;border-radius:14px;border:2px solid var(--honey);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{opacity:.9;transform:scale(.96)}100%{opacity:0;transform:scale(1.18)}}
+.tv-tag{position:absolute;left:28px;top:28px;background:rgba(27,32,19,.75);color:var(--cream);font-size:12px;padding:6px 11px;border-radius:999px}
+.steps{display:grid;gap:14px;counter-reset:s}
+.step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:22px;border-radius:var(--r-md);background:var(--cream);border:1px solid var(--line)}
+.step::before{counter-increment:s;content:counter(s);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+  font:500 24px var(--serif);background:var(--olive);color:var(--cream)}
+.step h3{margin-bottom:4px}
+.step p{color:var(--ink-2);font-size:16px}
+
+/* Bento */
+.features{background:var(--paper)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cell{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:flex;flex-direction:column;gap:12px;min-height:250px;overflow:hidden;position:relative}
+.cell p{color:var(--ink-2);font-size:16px}
+.c-a{grid-column:span 4;background:var(--sage-soft);border-color:transparent}
+.c-b{grid-column:span 2;background:var(--mint);border-color:transparent}
+.c-c{grid-column:span 2;background:var(--peach);border-color:transparent}
+.c-d{grid-column:span 2}
+.c-e{grid-column:span 2;background:var(--sky);border-color:transparent}
+.cell .tag{align-self:flex-start;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.7)}
+.calc{margin-top:auto;display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);white-space:nowrap}
+.arrow{width:44px;height:44px;border-radius:50%;background:var(--olive);color:var(--cream);display:grid;place-items:center}
+.result{background:#fff;border-radius:var(--r-sm);padding:16px;display:grid;gap:10px}
+.result b{font:500 26px var(--serif)}
+.bar{display:grid;grid-template-columns:28px 1fr 46px;gap:8px;align-items:center;font-size:12px;color:var(--ink-2)}
+.bar span{height:7px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar span::after{content:"";display:block;height:100%;width:var(--w);border-radius:9px;background:var(--c)}
+.mini-list{margin-top:auto;display:grid;gap:8px}
+.mini-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,.75);border-radius:12px;padding:10px 12px;font-size:14px}
+.mini-row b{color:var(--mint-ink)}
+.state{margin-top:auto;display:grid;gap:8px}
+.state div{background:rgba(255,255,255,.75);border-radius:12px;padding:10px 12px;font-size:14px}
+.state div span{color:var(--peach-ink);font-weight:600}
+.wave{margin-top:auto;display:flex;align-items:center;gap:4px;height:56px}
+.wave i{flex:1;max-width:6px;border-radius:6px;background:var(--olive);opacity:.85;animation:wv 1.2s ease-in-out infinite}
+@keyframes wv{0%,100%{height:20%}50%{height:100%}}
+.shield{margin-top:auto;background:#fff;border-radius:12px;padding:12px 14px;font-size:14px;display:flex;gap:10px;align-items:flex-start;color:var(--sky-ink)}
+.shield .ico{color:#B4452A;margin-top:2px}
+
+/* Чат */
+.chat-sec{background:var(--cream)}
+.chat-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:start}
+.chat{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--shadow);display:flex;flex-direction:column;height:640px;overflow:hidden}
+.chat-head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.6)}
+.chat-head .logo-mark{width:42px;height:42px;border-radius:50%}
+.chat-head b{display:block;font-size:16px}
+.chat-head small{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.chat-head small::before{content:"";width:7px;height:7px;border-radius:50%;background:#39A66E}
+.chat-head button{margin-left:auto;border:0;background:transparent;color:var(--muted);font:500 14px var(--sans);cursor:pointer;padding:8px}
+.chat-head button:hover{color:var(--ink)}
+.msgs{flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.m{max-width:80%;padding:12px 16px;border-radius:20px;white-space:pre-wrap;word-wrap:break-word;font-size:16px;line-height:1.5;animation:in .25s ease-out}
+.m.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:6px}
+.m.user{align-self:flex-end;background:var(--olive);color:var(--cream);border-bottom-right-radius:6px}
+.m .act{display:inline-flex;margin-top:10px;gap:8px;align-items:center;font-weight:600;font-size:14px;color:var(--olive);text-decoration:none}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.typing{display:inline-flex;gap:5px;padding:4px 2px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:tp 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes tp{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.quick{display:flex;gap:8px;overflow-x:auto;padding:0 22px 12px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.quick::-webkit-scrollbar{display:none}
+.quick:empty{display:none}
+.quick button{flex:none;border:1px solid var(--line);background:#fff;color:var(--ink);font:14px var(--sans);padding:9px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.quick button:hover{border-color:var(--olive);color:var(--olive)}
+.composer{display:flex;align-items:flex-end;gap:10px;padding:14px 16px 16px;border-top:1px solid var(--line);background:rgba(255,255,255,.6)}
+.field{flex:1;min-width:0;display:flex;align-items:flex-end;background:#fff;border:1px solid var(--line);border-radius:26px;padding:4px 6px 4px 18px;transition:border-color .2s}
+.field:focus-within{border-color:var(--olive)}
+.field textarea{flex:1;min-width:0;width:100%;border:0;outline:0;background:transparent;color:var(--ink);font:16px/1.4 var(--sans);resize:none;max-height:150px;padding:11px 0}
+.ib{flex:none;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;transition:background .2s,opacity .2s}
+.ib.mic{background:transparent;color:var(--muted)}
+.ib.mic:hover{color:var(--olive)}
+.ib.mic.rec{background:#D9442C;color:#fff;animation:ring 1.2s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(217,68,44,.45)}100%{box-shadow:0 0 0 14px rgba(217,68,44,0)}}
+.ib.send{width:52px;height:52px;background:var(--olive);color:var(--cream)}
+.ib.send:disabled{opacity:.35;cursor:default}
+.chat-note{font-size:13px;color:var(--muted);text-align:center;padding:10px 20px 0}
+.side{display:grid;gap:16px}
+.side-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;display:grid;gap:14px}
+.side-card ol{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--ink-2);font-size:16px}
+.side-card ol b{color:var(--ink)}
+.tg-card{background:var(--olive-3);color:var(--cream);border-color:transparent}
+.tg-card p{color:rgba(245,239,227,.78);font-size:16px}
+.tg-card .btn{justify-self:start}
+
+/* Врач */
+.doctor{background:var(--paper)}
+.doc-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.doc-photo-wrap{position:relative}
+.doc-photo{aspect-ratio:4/5;border-radius:var(--r-xl)}
+.doc-badge{position:absolute;right:-18px;bottom:36px;background:#fff;border-radius:18px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;font-size:14px}
+.doc-badge .logo-mark{width:38px;height:38px;border-radius:50%}
+.doc-badge b{display:block;font-size:15px}
+.quote{margin:0;font:italic 500 clamp(22px,2.4vw,30px)/1.35 var(--serif);color:var(--olive-3);border-left:3px solid var(--honey);padding-left:22px}
+.doc-name{display:grid;gap:2px}
+.doc-name b{font-size:19px}
+.doc-name span{color:var(--muted);font-size:15px}
+.checks{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:12px;font-size:16px;color:var(--ink-2)}
+.checks li b{color:var(--ink)}
+.checks .ok{width:28px;height:28px;border-radius:50%;background:var(--sage-soft);color:var(--olive);display:grid;place-items:center}
+.checks .ok .ico{width:16px;height:16px}
+
+/* Видеоблог */
+.blog{background:var(--olive-3);color:var(--cream)}
+.blog .eyebrow{color:var(--honey)}
+.blog em{color:var(--honey)}
+.blog .lead{color:rgba(245,239,227,.78)}
+.eps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ep{display:grid;gap:14px;text-decoration:none}
+.ep-thumb{aspect-ratio:16/10;border-radius:var(--r-md)}
+.ep-thumb .play{position:absolute;inset:0;margin:auto;width:62px;height:62px;border-radius:50%;background:rgba(251,248,241,.92);display:grid;place-items:center;color:var(--olive-3);z-index:1;transition:transform .2s}
+.ep:hover .play{transform:scale(1.08)}
+.ep-thumb .qrmini{position:absolute;right:12px;top:12px;z-index:1;background:#fff;color:var(--olive-3);font-size:11px;font-weight:600;padding:5px 9px;border-radius:8px}
+.ep h3{font-size:19px}
+.ep p{color:rgba(245,239,227,.7);font-size:15px}
+.ep-kicker{font-size:13px;color:var(--honey);font-weight:600}
+.blog-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px}
+
+/* Финальный CTA */
+.final{padding:110px 0}
+.final-card{background:var(--sage-soft);border-radius:var(--r-xl);padding:clamp(36px,6vw,80px);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.final-card::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(226,167,90,.25);right:-120px;bottom:-200px}
+.final-card > *{position:relative;z-index:1}
+.final-ctas{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+
+/* Футер */
+footer{padding:48px 0 calc(48px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;gap:24px 40px;align-items:flex-start;justify-content:space-between}
+.foot-links{display:flex;flex-wrap:wrap;gap:22px;font-size:15px}
+.foot-links a{text-decoration:none;color:var(--ink-2)}
+.disclaimer{font-size:13px;color:var(--muted);max-width:720px;margin-top:22px}
+
+/* Мобильная липкая кнопка */
+.mcta{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:none;gap:10px;transition:transform .3s,opacity .3s}
+.mcta .btn{flex:1;min-height:52px}
+.mcta .btn-ghost{flex:none;width:52px;padding:0;background:#fff}
+.mcta.hide{transform:translateY(120%);opacity:0;pointer-events:none}
+
+/* Появление при прокрутке */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+@media (max-width:1020px){
+  .nav-links{display:none}
+  .hero .wrap,.how-grid,.chat-grid,.doc-grid,.final-card{grid-template-columns:1fr}
+  .hero-visual{min-height:560px;max-width:560px;width:100%;margin:0 auto}
+  .doc-grid{gap:44px}
+  .doc-photo-wrap{max-width:460px}
+  .eps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  section{padding:76px 0}
+  .wrap{padding:0 18px}
+  .nav .wrap{height:64px}
+  .nav .btn span{display:none}
+  .nav .btn{width:44px;padding:0}
+  .hero{padding:28px 0 80px}
+  .hero .wrap{gap:40px}
+  .hero-ctas .btn{flex:1 1 100%}
+  .hero-visual{min-height:500px}
+  .hero-photo{width:86%;aspect-ratio:4/5.2}
+  .phone{width:226px;bottom:-6px}
+  .phone-screen{height:390px}
+  .phone-chat{font-size:12px}
+  .float{font-size:13px;padding:9px 12px}
+  .float.f1{right:-4px;top:28px}
+  .float.f2{display:none}
+  .float.f3{right:-4px;bottom:30px}
+  .caption{bottom:-32px}
+  .bento{grid-template-columns:1fr}
+  .c-a,.c-b,.c-c,.c-d,.c-e{grid-column:auto}
+  .calc{grid-template-columns:1fr;justify-items:start}
+  .arrow{transform:rotate(90deg)}
+  .chat{height:72vh;min-height:520px;border-radius:var(--r-lg)}
+  .m{max-width:88%}
+  .msgs{padding:16px}
+  .quick{padding:0 16px 10px}
+  .eps{grid-template-columns:1fr}
+  .doc-badge{right:10px}
+  .qr{width:64px;height:64px;padding:5px;right:20px;bottom:20px}
+  .tv-tag{left:20px;top:20px}
+  .mcta{display:flex}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+  .pb{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Иконки -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-13 15-13-1 9-6 14-13 14"/><path d="M5 20l8-8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21 4 3 11.2l6.2 2.1L11.5 20l3.2-4.1 4.8 3.6L21 4Z"/><path d="m9.2 13.3 6.8-5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M12 9v11M4 13h16M12 9c-2-4-6-4-6-1.5S9 9 12 9Zm0 0c2-4 6-4 6-1.5S15 9 12 9Z"/></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a5 5 0 0 0 10 0v-2"/><circle cx="21" cy="12" r="2"/></symbol>
+</svg>
+
+<!-- Навигация -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Нутри — на главную">
+      <span class="logo-mark"><svg class="ico"><use href="#i-leaf"/></svg></span>Нутри
+    </a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#how">Как это работает</a>
+      <a href="#features">Возможности</a>
+      <a href="#doctor">Врач</a>
+      <a href="#blog">Видеоблог</a>
+    </nav>
+    <a class="btn btn-primary" href="#chat" data-cta="nav"><svg class="ico"><use href="#i-arrow"/></svg><span>Спросить ИИ</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">ИИ-нутрициолог загородной кухни</span>
+      <h1>Блюдо из&nbsp;видео&nbsp;— <em>под&nbsp;ваш организм</em></h1>
+      <p class="lead">Расскажите о себе и о самочувствии. Нутри пересчитает порцию, добавит белок и клетчатку, подберёт специи и подачу. Пишите или просто наговорите голосом.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#chat" data-cta="hero">Спросить ИИ <svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#" data-tg data-cta="hero_tg"><svg class="ico"><use href="#i-tg"/></svg>Открыть в Telegram</a>
+      </div>
+      <div class="trust">
+        <span><svg class="ico"><use href="#i-gift"/></svg>Бесплатно в пилоте</span>
+        <span><svg class="ico"><use href="#i-lock"/></svg>Без регистрации</span>
+        <span><svg class="ico"><use href="#i-steth"/></svg>Правила утверждает врач</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" aria-hidden="true">
+      <div class="blob b1"></div><div class="blob b2"></div>
+      <!-- ЗАМЕНИТЕ ФОТО: положите файл photos/hero-dish.jpg — он подставится сам -->
+      <div class="ph hero-photo" data-src="photos/hero-dish.jpg" data-label="Фото блюда из выпуска · 1200×1500"></div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-top">
+            <span class="logo-mark"><svg class="ico"><use href="#i-leaf"/></svg></span>
+            <div><b>Нутри</b><small>ИИ-нутрициолог</small></div>
+          </div>
+          <div class="phone-chat" id="demoChat">
+            <div class="pb u">Мне 34, бегаю 3 раза в неделю. Сегодня мёрзну</div>
+            <div class="pb b">Сделаем порцию плотнее и добавим нут. Подайте тёплым, а в соус — имбирь и щепоть кумина</div>
+            <div class="pb u">А если без глютена?</div>
+            <div class="pb b">Заменим булгур на киноа, остальное без изменений</div>
+          </div>
+          <div class="phone-input"><span>Напишите сообщение…</span> <svg class="ico"><use href="#i-mic"/></svg></div>
+        </div>
+      </div>
+      <div class="float f1"><i></i>Белок <b>+12 г</b></div>
+      <div class="float f2"><i></i>Мёрзну → <b>тёплая подача</b></div>
+      <div class="float f3"><i></i>Порция <b>340 г</b></div>
+      <span class="caption">Пример диалога</span>
+    </div>
+  </div>
+</section>
+
+<!-- КАК ЭТО РАБОТАЕТ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Как это работает</span>
+      <h2>От экрана телевизора <em>до вашей тарелки</em></h2>
+    </div>
+    <div class="how-grid">
+      <div class="tv reveal" aria-hidden="true">
+        <!-- ЗАМЕНИТЕ ФОТО: photos/tv-frame.jpg — кадр из выпуска 16:9 -->
+        <div class="ph tv-screen" data-src="photos/tv-frame.jpg" data-label="Кадр из выпуска 16:9"></div>
+        <span class="tv-tag">Выпуск идёт на ТВ</span>
+        <div class="qr" id="qr"></div>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div><h3>Смотрите выпуск</h3><p>Разбираем ресторанное блюдо и готовим лёгкую версию на загородной кухне.</p></div></div>
+        <div class="step reveal"><div><h3>Наводите камеру на QR</h3><p>Код в углу экрана открывает Нутри на телефоне сразу с нужным рецептом.</p></div></div>
+        <div class="step reveal"><div><h3>Получаете своё блюдо</h3><p>Расскажите о себе в чате — ИИ подстроит порцию, нутриенты и специи.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ВОЗМОЖНОСТИ -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Что умеет Нутри</span>
+      <h2>Один рецепт — <em>тысяча версий</em></h2>
+      <p class="lead">Нутри берёт блюдо из выпуска и превращает его в вашу версию. Никаких анкет на десять экранов: просто разговор.</p>
+    </div>
+    <div class="bento">
+      <article class="cell c-a reveal">
+        <span class="tag">Порция</span>
+        <h3>Пересчитает граммовку под вас</h3>
+        <p>Возраст, вес, активность и цель превращаются в точную порцию и баланс БЖУ.</p>
+        <div class="calc" aria-hidden="true">
+          <div class="chips"><span class="chip">34 года</span><span class="chip">70 кг</span><span class="chip">бег 3×/нед</span><span class="chip">цель: энергия</span></div>
+          <span class="arrow"><svg class="ico"><use href="#i-arrow"/></svg></span>
+          <div class="result">
+            <b>340 г</b>
+            <div class="bar">Б<span style="--w:72%;--c:#4A5D23"></span>32 г</div>
+            <div class="bar">Ж<span style="--w:48%;--c:#E2A75A"></span>18 г</div>
+            <div class="bar">У<span style="--w:60%;--c:#C2643A"></span>52 г</div>
+          </div>
+        </div>
+      </article>
+      <article class="cell c-b reveal">
+        <span class="tag">Нутриенты</span>
+        <h3>Добавит недостающее</h3>
+        <p>Подскажет, чем добрать белок и клетчатку без лишних калорий.</p>
+        <div class="mini-list" aria-hidden="true">
+          <div class="mini-row">+ нут к салату <b>+9 г белка</b></div>
+          <div class="mini-row">+ семена льна <b>+3 г клетчатки</b></div>
+        </div>
+      </article>
+      <article class="cell c-c reveal">
+        <span class="tag">Самочувствие</span>
+        <h3>Слушает, как вы сегодня</h3>
+        <p>Подсказки по традиции аюрведы: специи, температура, размер порции.</p>
+        <div class="state" aria-hidden="true">
+          <div><span>Мёрзну</span> → имбирь, тёплая подача</div>
+          <div><span>Тяжесть</span> → порция меньше, фенхель</div>
+        </div>
+      </article>
+      <article class="cell c-d reveal">
+        <span class="tag">Голос</span>
+        <h3>Пишите или говорите</h3>
+        <p>Руки в муке? Нажмите микрофон и расскажите, что у вас есть.</p>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+      </article>
+      <article class="cell c-e reveal">
+        <span class="tag">Безопасность</span>
+        <h3>Помнит про ограничения</h3>
+        <p>Учтёт аллергии, а при заболеваниях честно направит к врачу.</p>
+        <div class="shield" aria-hidden="true"><svg class="ico"><use href="#i-shield"/></svg>В рецепте есть орехи — предлагаю замену на тыквенные семечки</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ЧАТ -->
+<section class="chat-sec" id="chat">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Попробуйте прямо сейчас</span>
+      <h2>Спросите Нутри <em>о своём блюде</em></h2>
+    </div>
+    <div class="chat-grid">
+      <div class="reveal">
+        <div class="chat" role="region" aria-label="Чат с ИИ-нутрициологом">
+          <div class="chat-head">
+            <span class="logo-mark"><svg class="ico"><use href="#i-leaf"/></svg></span>
+            <div><b>Нутри</b><small>ИИ-нутрициолог</small></div>
+            <button type="button" id="reset">Очистить</button>
+          </div>
+          <div class="msgs" id="msgs" aria-live="polite"></div>
+          <div class="quick" id="quick"></div>
+          <div class="composer">
+            <div class="field">
+              <textarea id="input" rows="1" placeholder="Напишите сообщение…" aria-label="Сообщение" enterkeyhint="send"></textarea>
+              <button class="ib mic" id="mic" type="button" aria-label="Голосовой ввод"><svg class="ico"><use href="#i-mic"/></svg></button>
+            </div>
+            <button class="ib send" id="send" type="button" aria-label="Отправить" disabled><svg class="ico"><use href="#i-send"/></svg></button>
+          </div>
+        </div>
+        <p class="chat-note">Не медицинская рекомендация. Переписка хранится только в вашем браузере.</p>
+      </div>
+      <aside class="side">
+        <div class="side-card reveal">
+          <h3>Как получить лучший ответ</h3>
+          <ol>
+            <li><b>О себе:</b> возраст, рост, вес, активность и цель</li>
+            <li><b>Блюдо:</b> название из выпуска или сам рецепт</li>
+            <li><b>Самочувствие:</b> мёрзнете, тяжесть, мало сил</li>
+            <li><b>Ограничения:</b> аллергии и то, что не едите</li>
+          </ol>
+        </div>
+        <div class="side-card tg-card reveal">
+          <h3>Удобнее в Telegram?</h3>
+          <p>Тот же Нутри в мессенджере: история рецептов под рукой, напоминания о новых выпусках.</p>
+          <a class="btn btn-light" href="#" data-tg data-cta="side_tg"><svg class="ico"><use href="#i-tg"/></svg>Открыть в Telegram</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ВРАЧ -->
+<section class="doctor" id="doctor">
+  <div class="wrap doc-grid">
+    <div class="doc-photo-wrap reveal">
+      <!-- ЗАМЕНИТЕ ФОТО: photos/doctor.jpg — портрет 4:5 -->
+      <div class="ph doc-photo" data-src="photos/doctor.jpg" data-label="Портрет врача · 1000×1250"></div>
+      <div class="doc-badge">
+        <span class="logo-mark"><svg class="ico"><use href="#i-check"/></svg></span>
+        <div><b>Проверено врачом</b>каждый рецепт и правило</div>
+      </div>
+    </div>
+    <div style="display:grid;gap:26px">
+      <div class="sec-head reveal" style="margin:0">
+        <span class="eyebrow">Наука за каждым ответом</span>
+        <h2>Правила пишет врач, <em>а не нейросеть</em></h2>
+        <p class="lead">ИИ ведёт разговор и объясняет. Граммовку и замены считает программа по правилам, которые утвердил врач-нутрициолог команды.</p>
+      </div>
+      <!-- ЗАМЕНИТЕ: цитата, имя и регалии врача -->
+      <blockquote class="quote reveal">«Здесь будет короткая цитата врача о подходе к питанию — одно-два предложения.»</blockquote>
+      <div class="doc-name reveal"><b>[Имя Фамилия]</b><span>[Врач-диетолог, нутрициолог · стаж N лет]</span></div>
+      <ul class="checks reveal">
+        <li><span class="ok"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Утверждает рецепты</b> перед тем, как они попадут в Нутри</span></li>
+        <li><span class="ok"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Задаёт стоп-правила:</b> аллергии, беременность, хронические заболевания — тогда ИИ не советует, а направляет к врачу</span></li>
+        <li><span class="ok"><svg class="ico"><use href="#i-check"/></svg></span><span><b>Проверяет подсказки</b> по традиции аюрведы — без медицинских обещаний</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ВИДЕОБЛОГ -->
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Видеоблог</span>
+      <h2>Ресторанное блюдо → <em>загородный апгрейд</em></h2>
+      <p class="lead">В каждом выпуске разбираем блюдо из ресторана и готовим версию легче и полезнее — на своей кухне за городом. QR в углу экрана ведёт прямо в Нутри.</p>
+    </div>
+    <div class="eps">
+      <!-- ЗАМЕНИТЕ: обложки photos/ep1.jpg… и ссылки на выпуски в href -->
+      <a class="ep reveal" href="#" data-video data-cta="ep1">
+        <div class="ph ep-thumb" data-src="photos/ep1.jpg" data-label="Обложка выпуска 16:10"><span class="play"><svg class="ico"><use href="#i-play"/></svg></span><span class="qrmini">QR в кадре</span></div>
+        <span class="ep-kicker">Выпуск 1</span>
+        <h3>[Название выпуска]</h3>
+        <p>[Ресторанное блюдо] → [загородная версия]</p>
+      </a>
+      <a class="ep reveal" href="#" data-video data-cta="ep2">
+        <div class="ph ep-thumb" data-src="photos/ep2.jpg" data-label="Обложка выпуска 16:10"><span class="play"><svg class="ico"><use href="#i-play"/></svg></span><span class="qrmini">QR в кадре</span></div>
+        <span class="ep-kicker">Выпуск 2</span>
+        <h3>[Название выпуска]</h3>
+        <p>[Ресторанное блюдо] → [загородная версия]</p>
+      </a>
+      <a class="ep reveal" href="#" data-video data-cta="ep3">
+        <div class="ph ep-thumb" data-src="photos/ep3.jpg" data-label="Обложка выпуска 16:10"><span class="play"><svg class="ico"><use href="#i-play"/></svg></span><span class="qrmini">QR в кадре</span></div>
+        <span class="ep-kicker">Выпуск 3</span>
+        <h3>[Название выпуска]</h3>
+        <p>[Ресторанное блюдо] → [загородная версия]</p>
+      </a>
+    </div>
+    <div class="blog-cta reveal">
+      <a class="btn btn-light" href="#" data-video data-cta="blog_all"><svg class="ico"><use href="#i-play"/></svg>Смотреть все выпуски</a>
+      <a class="btn btn-outline-light" href="#chat" data-cta="blog_chat">Спросить ИИ о блюде</a>
+    </div>
+  </div>
+</section>
+
+<!-- ФИНАЛ -->
+<section class="final">
+  <div class="wrap">
+    <div class="final-card reveal">
+      <div style="display:grid;gap:18px">
+        <h2>Следующее блюдо&nbsp;— <em>уже ваше</em></h2>
+        <p class="lead">Бесплатно на время пилота. Без регистрации: расскажите о себе — и готовьте свою версию.</p>
+      </div>
+      <div class="final-ctas">
+        <a class="btn btn-primary" href="#chat" data-cta="final">Спросить ИИ <svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#" data-tg data-cta="final_tg"><svg class="ico"><use href="#i-tg"/></svg>Открыть в Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="logo" href="#top"><span class="logo-mark"><svg class="ico"><use href="#i-leaf"/></svg></span>Нутри</a>
+      <nav class="foot-links" aria-label="Нижнее меню">
+        <a href="#how">Как это работает</a>
+        <a href="#doctor">Врач</a>
+        <a href="#blog">Видеоблог</a>
+        <a href="#" data-tg>Telegram</a>
+        <!-- ЗАМЕНИТЕ: ссылка на политику обработки персональных данных -->
+        <a href="#">Политика конфиденциальности</a>
+      </nav>
+    </div>
+    <p class="disclaimer">Нутри не ставит диагнозы и не заменяет консультацию врача. Рекомендации носят информационный характер. При заболеваниях, беременности, кормлении грудью и приёме лекарств обсудите питание с лечащим врачом. Подсказки по аюрведе — это кулинарная традиция, а не лечение. © 2026 Нутри</p>
+  </div>
+</footer>
+
+<div class="mcta hide" id="mcta">
+  <a class="btn btn-primary" href="#chat" data-cta="mobile_sticky">Спросить ИИ</a>
+  <a class="btn btn-ghost" href="#" data-tg data-cta="mobile_tg" aria-label="Открыть в Telegram"><svg class="ico"><use href="#i-tg"/></svg></a>
+</div>
+
+<script>
+/* ======================================================================
+   НАСТРОЙКИ — ЗАПОЛНЯЕТ КОМАНДА
+   ====================================================================== */
+const CONFIG = {
+  TELEGRAM_URL: "https://t.me/your_bot/app",   // ссылка на Mini App: t.me/ИмяБота/имя_приложения
+  VIDEO_URL: "#",                               // канал с выпусками (VK Видео, YouTube, Rutube)
+  AI_ENDPOINT: "",                              // адрес облачной функции: https://functions.yandexcloud.net/<id>. Пусто = демо-режим
+  METRIKA_ID: "",                               // номер счётчика Яндекс Метрики, например "98765432". Пусто = без Метрики
+  GREETING: "Привет! Я Нутри. Расскажите о себе — возраст, вес, активность и цель — и пришлите блюдо из выпуска. Ещё напишите, как себя чувствуете сегодня. Можно голосом.",
+  QUICK: [
+    "Мне 34, 70 кг, бегаю 3 раза в неделю",
+    "Хочу блюдо из последнего выпуска",
+    "Сегодня мёрзну",
+    "Вчера переел(а), тяжесть",
+    "Аллергия на орехи"
+  ],
+  DEMO_REPLY: "Спасибо! Сейчас это демо-версия: ИИ подключаем на следующем шаге, поэтому ответ шаблонный. Продолжить разговор можно в Telegram."
+};
+
+/* ---------- Аналитика (без сервера) ----------
+   Для метрики QR → онбординг ставьте в QR ссылку с меткой: https://ваш-сайт/?utm_source=qr&utm_content=ep1 */
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+(function captureUtm() {
+  const p = new URLSearchParams(location.search), utm = {};
+  ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(k => { if (p.get(k)) utm[k] = p.get(k); });
+  if (Object.keys(utm).length && !store.get("first_utm")) store.set("first_utm", utm);
+})();
+function track(name, props) {
+  const today = new Date().toISOString().slice(0, 10);
+  const days = store.get("visit_days", []);
+  if (!days.includes(today)) { days.push(today); store.set("visit_days", days); }
+  let anon = store.get("anon_id");
+  if (!anon) { anon = Math.random().toString(36).slice(2) + Date.now().toString(36); store.set("anon_id", anon); }
+  const payload = Object.assign({}, props || {}, { anon, days: days.length, utm: store.get("first_utm", null) });
+  if (CONFIG.METRIKA_ID && window.ym) ym(+CONFIG.METRIKA_ID, "reachGoal", name, payload);
+  console.log("[event]", name, payload);
+}
+(function metrika() {
+  if (!CONFIG.METRIKA_ID) return;
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  ym(+CONFIG.METRIKA_ID, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+})();
+track("page_view");
+
+/* ---------- Ссылки и кнопки ---------- */
+document.querySelectorAll("[data-tg]").forEach(a => { a.href = CONFIG.TELEGRAM_URL; a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll("[data-video]").forEach(a => { if (CONFIG.VIDEO_URL !== "#") { a.href = CONFIG.VIDEO_URL; a.target = "_blank"; a.rel = "noopener"; } });
+document.querySelectorAll("[data-cta]").forEach(a => a.addEventListener("click", () => track("cta_click", { where: a.dataset.cta })));
+
+/* ---------- Фото: если файл есть в папке photos/, он заменит заглушку ---------- */
+document.querySelectorAll(".ph[data-src]").forEach(el => {
+  const img = new Image();
+  img.onload = () => { el.style.backgroundImage = 'url("' + el.dataset.src + '")'; el.classList.add("loaded"); };
+  img.src = el.dataset.src;
+});
+
+/* ---------- Навигация, появление, липкая кнопка ---------- */
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive: true });
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+if ("IntersectionObserver" in window && !reduce) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+}
+// Липкая кнопка на телефоне: прячем на первом экране, у чата и в футере
+(function stickyCta() {
+  const mcta = document.getElementById("mcta");
+  if (!("IntersectionObserver" in window)) { mcta.classList.remove("hide"); return; }
+  const vis = new Set();
+  const mio = new IntersectionObserver(es => {
+    es.forEach(e => e.isIntersecting ? vis.add(e.target) : vis.delete(e.target));
+    mcta.classList.toggle("hide", vis.size > 0);
+  }, { threshold: .15 });
+  document.querySelectorAll(".hero, #chat, footer").forEach(el => mio.observe(el));
+})();
+
+/* ---------- Декор: QR, волна, демо-диалог ---------- */
+(function drawQr() {
+  const box = document.getElementById("qr"); if (!box) return;
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const finder = (r, c) => {
+    for (const [r0, c0] of [[0, 0], [0, 14], [14, 0]]) {
+      const y = r - r0, x = c - c0;
+      if (y >= 0 && y < 7 && x >= 0 && x < 7) return (y === 0 || y === 6 || x === 0 || x === 6 || (y > 1 && y < 5 && x > 1 && x < 5)) ? 1 : 0;
+      if (y >= -1 && y <= 7 && x >= -1 && x <= 7) return 0;
+    }
+    return -1;
+  };
+  let html = "";
+  for (let r = 0; r < 21; r++) for (let c = 0; c < 21; c++) {
+    const f = finder(r, c); const on = f === -1 ? rnd() > .52 : f === 1;
+    html += on ? "<i></i>" : '<i class="o"></i>';
+  }
+  box.innerHTML = html;
+})();
+(function drawWave() {
+  const w = document.getElementById("wave"); if (!w) return;
+  let h = ""; for (let i = 0; i < 28; i++) h += '<i style="height:' + (25 + Math.round(70 * Math.abs(Math.sin(i * 0.7)))) + '%;animation-delay:' + (-(i * 0.09)).toFixed(2) + 's"></i>';
+  w.innerHTML = h;
+})();
+(function demoChat() {
+  const items = [...document.querySelectorAll("#demoChat .pb")];
+  if (reduce) { items.forEach(i => i.classList.add("show")); return; }
+  let i = 0;
+  const step = () => {
+    if (i < items.length) { items[i++].classList.add("show"); setTimeout(step, i % 2 ? 1300 : 2100); }
+    else setTimeout(() => { items.forEach(x => x.classList.remove("show")); i = 0; setTimeout(step, 700); }, 4200);
+  };
+  setTimeout(step, 600);
+})();
+
+/* ---------- Чат ---------- */
+const $ = id => document.getElementById(id);
+const msgs = $("msgs"), input = $("input"), sendBtn = $("send"), micBtn = $("mic");
+const HKEY = "nutri_site_history";
+let history = store.get(HKEY, []);
+let busy = false;
+
+async function getReply(hist) {
+  if (CONFIG.AI_ENDPOINT) {
+    // Сервер принимает {messages:[{role,text}]} и возвращает {reply:"..."}.
+    // text/plain — «простой» запрос без предварительной CORS-проверки, сервер всё равно читает JSON.
+    const ctrl = new AbortController(); const timer = setTimeout(() => ctrl.abort(), 35000);
+    try {
+      const r = await fetch(CONFIG.AI_ENDPOINT, {
+        method: "POST", headers: { "Content-Type": "text/plain;charset=UTF-8" }, signal: ctrl.signal,
+        body: JSON.stringify({ messages: hist.map(m => ({ role: m.role, text: m.text })).slice(-16), anon_id: store.get("anon_id"), utm: store.get("first_utm", null), source: "site" })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.status === 429) return { text: j.reply || "На сегодня лимит сообщений исчерпан. Возвращайтесь завтра!" };
+      if (!r.ok || !j.reply) throw new Error("HTTP " + r.status + " " + (j.error || ""));
+      return { text: j.reply };
+    } finally { clearTimeout(timer); }
+  }
+  await new Promise(r => setTimeout(r, 900));
+  return { text: CONFIG.DEMO_REPLY, action: { label: "Открыть в Telegram", url: CONFIG.TELEGRAM_URL } };
+}
+
+function bubble(role, text, action) {
+  const d = document.createElement("div");
+  d.className = "m " + (role === "user" ? "user" : "bot");
+  d.textContent = text;
+  if (action) {
+    const a = document.createElement("a");
+    a.className = "act"; a.href = action.url; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = action.label + " →";
+    a.addEventListener("click", () => track("cta_click", { where: "chat_reply_tg" }));
+    d.appendChild(document.createElement("br")); d.appendChild(a);
+  }
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+  return d;
+}
+function renderChat() {
+  msgs.innerHTML = "";
+  bubble("assistant", CONFIG.GREETING);
+  history.forEach(m => bubble(m.role, m.text, m.action));
+  renderQuick();
+}
+function renderQuick() {
+  const q = $("quick"); q.innerHTML = "";
+  if (history.length) return;
+  CONFIG.QUICK.forEach(t => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = t;
+    b.onclick = () => { input.value = (input.value ? input.value.trim() + " " : "") + t; autosize(); toggleSend(); input.focus(); track("quick_reply", { text: t }); };
+    q.appendChild(b);
+  });
+}
+async function send() {
+  const text = input.value.trim();
+  if (!text || busy) return;
+  stopVoice(); busy = true;
+  input.value = ""; autosize(); toggleSend();
+  $("quick").innerHTML = "";
+  history.push({ role: "user", text }); store.set(HKEY, history);
+  bubble("user", text);
+  track("chat_message", { n: history.filter(m => m.role === "user").length, len: text.length, demo: !CONFIG.AI_ENDPOINT });
+  const t = bubble("assistant", ""); t.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+  let reply;
+  try { reply = await getReply(history); }
+  catch (e) { reply = { text: "Не получилось ответить. Проверьте интернет и попробуйте ещё раз через минуту." }; track("chat_error", { msg: String(e).slice(0, 120) }); }
+  t.remove();
+  bubble("assistant", reply.text, reply.action);
+  history.push({ role: "assistant", text: reply.text, action: reply.action }); store.set(HKEY, history);
+  busy = false;
+}
+function autosize() { if (!input.value) { input.style.height = ""; return; } input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 150) + "px"; }
+function toggleSend() { sendBtn.disabled = !input.value.trim(); }
+input.addEventListener("input", () => { autosize(); toggleSend(); });
+input.addEventListener("keydown", e => {
+  const touch = matchMedia("(pointer: coarse)").matches;
+  if (e.key === "Enter" && !e.shiftKey && !touch) { e.preventDefault(); send(); }
+});
+sendBtn.addEventListener("click", send);
+$("reset").addEventListener("click", () => {
+  if (!history.length || confirm("Очистить переписку?")) { history = []; store.set(HKEY, []); renderChat(); track("chat_reset"); }
+});
+
+/* ---------- Голосовой ввод (распознавание речи браузера) ----------
+   Работает в Chrome, Edge, Яндекс Браузере и Safari. Где не работает — подсказываем микрофон клавиатуры. */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let rec = null, recOn = false, base = "";
+function startVoice() {
+  if (!SR) { bubble("assistant", "В этом браузере голосовой ввод недоступен. Нажмите микрофон на клавиатуре телефона и наговорите сообщение."); track("voice_unsupported"); return; }
+  rec = new SR(); rec.lang = "ru-RU"; rec.interimResults = true; rec.continuous = true;
+  base = input.value ? input.value.trim() + " " : "";
+  rec.onresult = e => { let t = ""; for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript; input.value = base + t; autosize(); toggleSend(); };
+  rec.onerror = e => {
+    stopVoice();
+    if (e.error === "not-allowed" || e.error === "service-not-allowed") bubble("assistant", "Нет доступа к микрофону. Разрешите его в настройках браузера или используйте микрофон на клавиатуре.");
+  };
+  rec.onend = () => { recOn = false; micBtn.classList.remove("rec"); micBtn.setAttribute("aria-label", "Голосовой ввод"); };
+  try { rec.start(); recOn = true; micBtn.classList.add("rec"); micBtn.setAttribute("aria-label", "Остановить запись"); track("voice_start"); }
+  catch (e) { stopVoice(); }
+}
+function stopVoice() { try { rec && rec.stop(); } catch (e) {} recOn = false; micBtn.classList.remove("rec"); }
+micBtn.addEventListener("click", () => recOn ? stopVoice() : startVoice());
+
+renderChat(); toggleSend();
+</script>
+</body>
+</html>
